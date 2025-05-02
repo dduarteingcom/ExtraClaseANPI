@@ -1,28 +1,3 @@
-"""
-Solución de sistemas tridiagonales de ecuaciones lineales usando el Algoritmo de Thomas.
-
-Este módulo proporciona una implementación del algoritmo de Thomas (simplificación de la eliminación
-gaussiana para matrices tridiagonales) para resolver sistemas de ecuaciones de la forma Ax = b,
-donde A es una matriz tridiagonal.
-
-Características:
-- Extracción eficiente de diagonales.
-- Algoritmo en dos pasos: forward sweep y backward substitution.
-- Complejidad O(n), óptimo para sistemas grandes.
-
-Ejemplo de uso:
-    A = np.array([
-        [2, -1,  0,  0],
-        [-1, 2, -1,  0],
-        [0, -1, 2, -1],
-        [0,  0, -1, 2]
-    ])
-    b = np.array([1, 0, 0, 1])
-    x = thomas(A, b)  # Solución: [1.0, 1.0, 1.0, 1.0]
-
-Requiere:
-    numpy (np)
-"""   
 import numpy as np
 
 def extract_diagonal(matrix, diag_index):
@@ -82,16 +57,7 @@ def thomas(A, b):
     # Iteramos desde el penúltimo elemento hasta el primero (i=n-2 hasta i=0)
     for i in range(n-2, -1, -1):
         x[i] = q[i] - p[i] * x[i+1]
-
     return x
-
-
-# Ejemplo de uso:
-# Sistema tridiagonal:
-# [ 2 -1  0  0] [x0]   [1]
-# [-1  2 -1  0] [x1] = [0]
-# [ 0 -1  2 -1] [x2]   [0]
-# [ 0  0 -1  2] [x3]   [1]
 
 A = np.array([
     [2, -1,  0,  0],
@@ -104,4 +70,4 @@ b = np.array([1, 0, 0, 1], dtype=float)
 
 # Resolver el sistema
 x = thomas(A, b)
-print("Solución:", x)  # Debería imprimir: [1. 1. 1. 1.]
+print("Solución:", x) 
