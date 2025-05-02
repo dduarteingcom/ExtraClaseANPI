@@ -1,15 +1,7 @@
 import numpy as np
 
 def extract_diagonal(matrix, diag_index):
-    """Extrae una diagonal específica de una matriz.
-    
-    Args:
-        matrix (np.array): Matriz de entrada.
-        diag_index (int): Índice de la diagonal (0: principal, 1: superior, -1: inferior, etc.).
-    
-    Returns:
-        np.array: Vector con los elementos de la diagonal solicitada.
-    """
+    #Extrae una diagonal específica de una matriz.
     return np.diag(matrix, k=diag_index)
 
 
@@ -57,17 +49,30 @@ def thomas(A, b):
     # Iteramos desde el penúltimo elemento hasta el primero (i=n-2 hasta i=0)
     for i in range(n-2, -1, -1):
         x[i] = q[i] - p[i] * x[i+1]
-    return x
+    return x.reshape(-1, 1)
 
-A = np.array([
-    [2, -1,  0,  0],
-    [-1, 2, -1,  0],
-    [0, -1, 2, -1],
-    [0,  0, -1, 2]
-], dtype=float)
+# Función para generar la matriz tridiagonal y el vector b solicitada
+def matrix_generator():
+    A = np.zeros((100,100))
+    A[0,0] = 5
+    A[0,1] = 1
 
-b = np.array([1, 0, 0, 1], dtype=float)
+    for k in range(1,99):
+        A[k,k]= 5
+        A[k,k-1] = 1
+        A[k,k+1] = 1
+    
+    A[99,99] = 5 
+    A[99,98] = 1
+    b = np.zeros((100,1))
+    b[0] = -12
+    b[-1] = -12
+    
+    for j in range(1,99):
+        b[j] = -14
+    return A, b
 
 # Resolver el sistema
+A, b = matrix_generator()
 x = thomas(A, b)
-print("Solución:", x) 
+print("Solucion:", x) 
