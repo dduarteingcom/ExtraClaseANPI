@@ -97,6 +97,11 @@ plt.figure(figsize=(9,6))
 for h in h_vals:
     xs, ys = edo2(p, q, r, h, a=1, b=6, y0=1, y_n=0)
     plt.plot(xs, ys, label=f"Aprox.  h = {h}")
+    if h == 1:
+        print("\nValores de x e y cuando h = 1:\n")
+        for xi, yi in zip(xs, ys):
+            print(f"x = {xi:.1f}   y = {yi:.8f}")
+
 
 x_fine = np.linspace(1, 6, 1200)
 plt.plot(x_fine, y_exacta(x_fine), 'k--', lw=2, label='Solución exacta')
