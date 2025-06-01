@@ -1,6 +1,30 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""
+Estudiantes:
+Ana Melissa Vásquez Rojas
+Daniel Duarte Cordero
+"""
+
+
+"""
+Este script resuelve un problema de ecuación diferencial de segundo orden
+utilizando el método de diferencias finitas, según lo indicado en el enunciado
+oficial del curso. La ecuación a resolver es:
+
+    y'' = -1/x * y' + (1/(4x^2) - 1) * y
+con condiciones de frontera:
+    y(1) = 1,    y(6) = 0
+
+Se utiliza un sistema de ecuaciones tridiagonal resuelto con el algoritmo de 
+Thomas. Se calcula la solución aproximada para diferentes valores de h
+(paso de malla) y se compara con la solución exacta provista en el enunciado:
+
+    y(x) = sin(6 - x) / (sin(5) * sqrt(x))
+
+"""
+
 def extract_diagonal(matrix, diag_index):
     return np.diag(matrix, k=diag_index)
 
