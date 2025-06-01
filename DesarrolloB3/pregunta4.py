@@ -1,7 +1,11 @@
 import numpy as np
 import sympy as sp
 import matplotlib.pyplot as plt
-
+"""
+Estudiantes:
+Ana Melissa Vásquez Rojas
+Daniel Duarte Cordero
+"""
 
 def thomas(A, d):
     """
@@ -53,18 +57,13 @@ def trazador_cubico(x_val, y_val):
     """
     n = len(x_val)
 
-    # -------------------------------------------------------------
     # Paso 1: Calcular h_j = x_{j+1} - x_j para j = 0,...,n-2
-    # -------------------------------------------------------------
     h = np.zeros(n - 1)
     for j in range(n - 1):
         h[j] = x_val[j + 1] - x_val[j]
 
-    # -------------------------------------------------------------
     # Paso 2: Construcción del sistema lineal A·m = u
-    # A es la matriz tridiagonal y u el vector del lado derecho
-    # -------------------------------------------------------------
-    A = np.zeros((n - 2, n - 2))    # Matriz tridiagonal de tamaño (n-2) x (n-2)
+    A = np.zeros((n - 2, n - 2))    # A: Matriz tridiagonal de tamaño (n-2) x (n-2)
     u = np.zeros(n - 2)          # Vector lado derecho con valores u_j
 
     for j in range(n - 2):
@@ -79,19 +78,14 @@ def trazador_cubico(x_val, y_val):
         # Vector u
         u[j] = 6 * ((y_val[j + 2] - y_val[j + 1]) / h[j + 1] - (y_val[j + 1] - y_val[j]) / h[j])
 
-    # -------------------------------------------------------------
     # Paso 2.5: Resolver el sistema tridiagonal con el metodo de Thomas
     # m_0 = m_n = 0
-    # -------------------------------------------------------------
     m_interna = thomas(A, u)  # Soluciona el sistema para m_1 a m_{n-1}
     m = np.zeros(n)
     for j in range(1, n - 1):
         m[j] = m_interna[j - 1]
-    # m[0] y m[n-1] ya están en cero por condiciones naturales
 
-    # -------------------------------------------------------------
     # Paso 3: Calcular coeficientes a_j, b_j, c_j, d_j para j = 0,...,n-2
-    # -------------------------------------------------------------
     a = np.zeros(n - 1)
     b = np.zeros(n - 1)
     c = np.zeros(n - 1)
@@ -103,10 +97,8 @@ def trazador_cubico(x_val, y_val):
         c[j] = (y_val[j + 1] - y_val[j]) / h[j] - (h[j] / 6) * (2 * m[j] + m[j + 1])
         d[j] = y_val[j]
 
-    # -------------------------------------------------------------
     # Paso 4: Construcción simbólica de cada trazador cúbico s_j(x)
     # s_j(x) = a_j*(x - x_j)^3 + b_j*(x - x_j)^2 + c_j*(x - x_j) + d_j
-    # -------------------------------------------------------------
     x = sp.Symbol('x')
     funciones_trazador = [0] * (n - 1)
 

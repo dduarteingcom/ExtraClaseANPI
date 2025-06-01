@@ -1,5 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+"""
+Estudiantes:
+Ana Melissa Vásquez Rojas
+Daniel Duarte Cordero
+"""
 
 def f(x, y):
     return (x + y) / x

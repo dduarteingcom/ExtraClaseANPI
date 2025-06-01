@@ -1,5 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+"""
+Estudiantes:
+Ana Melissa Vásquez Rojas
+Daniel Duarte Cordero
+"""
 
 def extract_diagonal(matrix, diag_index):
     return np.diag(matrix, k=diag_index)
