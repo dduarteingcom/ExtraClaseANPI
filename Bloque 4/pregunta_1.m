@@ -1,4 +1,5 @@
-% Descripción: Cálculo de las cotas de error para la regla del trapecio y Simpson
+%Estudiantes: Ana Melissa Vásquez Rojas, Daniel Duarte Cordero
+%Descripción: Cálculo de las cotas de error para la regla del trapecio y Simpson
 function pregunta1()
   clc; clear;
   pkg load symbolic
@@ -11,10 +12,10 @@ function pregunta1()
   a = 0.2;
   b = 0.8;
 
-  % ------------------- Método del trapecio -------------------
+  % ------------------- Regla del trapecio -------------------
   E_trapecio = cota_error_trapecio(f, a, b);
 
-  fprintf('--- Método del Trapecio ---\n');
+  fprintf('--- Regla del Trapecio ---\n');
   fprintf('Cota de error: %.10e\n\n', E_trapecio);
 
 % -------------------------------------------------------------------
@@ -30,10 +31,10 @@ function E = cota_error_trapecio(f, a, b)
   E = ((b - a)^3 / 12) * alpha_max;
 endfunction
 
-  % ------------------- Método de Simpson -------------------
+  % ------------------- Regla de Simpson -------------------
   E_simpson = cota_error_simpson(f, a, b);
 
-  fprintf('--- Método de Simpson ---\n');
+  fprintf('--- Regla de Simpson ---\n');
   fprintf('Cota de error: %.10e\n', E_simpson);
 endfunction
 

@@ -1,6 +1,6 @@
-% Estudiantes: Ana Melissa Vásquez Rojas, Daniel Duarte Cordero
-% Descripción: Cálculo del valor mínimo de n (par) tal que la cota del error
-% del método compuesto de Simpson sea menor que la tolerancia indicada.
+%Estudiantes: Ana Melissa Vásquez Rojas, Daniel Duarte Cordero
+%Descripción: Cálculo del valor mínimo de n (par) tal que la cota del error
+%del método compuesto de Simpson sea menor que la tolerancia indicada.
 
 function pregunta2()
   clc; clear;
