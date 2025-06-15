@@ -21,7 +21,7 @@ function pregunta2()
   n = cota_simpson_puntos(f, a, b, tol);
 
   fprintf('--- Método de Simpson Compuesto ---\n');
-  fprintf('n = %d\n', n);
+  fprintf('Valor de n: %d\n', n);
 endfunction
 
 % -------------------------------------------------------------------
