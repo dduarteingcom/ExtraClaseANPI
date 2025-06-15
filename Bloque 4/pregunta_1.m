@@ -26,7 +26,7 @@ function E = cota_error_trapecio(f, a, b)
   f2 = diff(f, x, 2);             % Segunda derivada simbólica
   f2_abs = abs(f2);
   f2_func = matlabFunction(f2_abs);
-  [xmax, ~] = fminbnd(@(x) -f2_func(x), a, b);
+  [xmax, ~] = fminbnd(@(x) -f2_func(x), a, b); % Negamos "-f2_func(x)" para encontrar el máximo con fminbnd
   alpha_max = abs(f2_func(xmax));
   E = ((b - a)^3 / 12) * alpha_max;
 endfunction
@@ -46,7 +46,7 @@ function E = cota_error_simpson(f, a, b)
   f4 = diff(f, x, 4);             % Cuarta derivada simbólica
   f4_abs = abs(f4);
   f4_func = matlabFunction(f4_abs);
-  [xmax, ~] = fminbnd(@(x) -f4_func(x), a, b);
+  [xmax, ~] = fminbnd(@(x) -f4_func(x), a, b);% Negamos "-f4_func(x)" para encontrar el máximo con fminbnd
   alpha_max = abs(f4_func(xmax));
   E = ((b - a)^5 / 2880) * alpha_max;
 endfunction
